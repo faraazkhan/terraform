@@ -2439,6 +2439,18 @@ func TestInterpolateFuncSubstr(t *testing.T) {
 	})
 }
 
+func TestInterpolateFuncBase64Gzip(t *testing.T) {
+	testFunction(t, testFunctionConfig{
+		Cases: []testFunctionCase{
+			{
+				`${base64gzip("test")}`,
+				"H4sIAAAAAAAA/ypJLS4BAAAA//8BAAD//wx+f9gEAAAA",
+				false,
+			},
+		},
+	})
+}
+
 func TestInterpolateFuncBcrypt(t *testing.T) {
 	node, err := hil.Parse(`${bcrypt("test")}`)
 	if err != nil {
